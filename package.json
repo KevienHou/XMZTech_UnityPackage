@@ -1,0 +1,17 @@
+{
+  "name": "net.xmztech.tools",
+  "displayName": "Develop Tools",
+  "version": "1.0.0",
+  "type": "library",
+  "description": "自用小工具，由XMZTech(小马扎科技(郑州)有限公司)技术人员维护  邮箱: dev_hlc@163.com",
+  "unity": "2021.3",
+  "category": "XMZTech[小马扎科技(郑州)有限公司]",
+  "dependencies": "",
+  "samples": [
+    {
+      "displayName": "Http Tool",
+      "description": "异步 http 方法 get  post(header)  GetImg ",
+      "path": "Sample~/Http"
+    }
+  ]
+}
