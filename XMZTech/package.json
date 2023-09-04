@@ -3,15 +3,35 @@
   "displayName": "Develop Tools",
   "version": "1.0.0",
   "type": "library",
-  "description": "自用小工具，由XMZTech(小马扎科技(郑州)有限公司)技术人员维护  邮箱: dev_hlc@163.com",
+  "description": "自用小工具，由XMZTech(小马扎科技(郑州)有限公司)技术人员维护 ",
   "unity": "2021.3",
   "category": "XMZTech[小马扎科技(郑州)有限公司]",
-  "dependencies": "",
+  "dependencies": 
+    {
+       "com.unity.nuget.newtonsoft-json":"3.1.0"
+    },
   "samples": [
     {
       "displayName": "Http Tool",
       "description": "异步 http 方法 get  post(header)  GetImg ",
       "path": "Sample~/Http"
+    },
+    {
+      "displayName": "Microsoft YaHei UI 7000",
+      "description": "微软雅黑字体 ",
+      "path": "Sample~/MicrosoftYaHeiUI7000"
+    },  
+    {
+      "displayName": "TCP",
+      "description": "TCP/IP 工具，包含Client和Server，以及TimeAction代码块，还有上层封装ClientManager，ServerManager",
+      "path": "Sample~/TCP"
     }
-  ]
+  ],
+   "author": {
+    "name": "XMZTech[小马扎科技(郑州)有限公司]",
+    "email": "dev_hlc@163.com",
+    "url": "https://www.unity3d.com"
+  }
 }
+
+ 
