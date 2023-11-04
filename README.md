@@ -23,13 +23,7 @@ a.TimeTrigger|解决非主线程无法调用Unity主线API的问题
 Disc： 事件回调管理器，应用于框架中的消息机制，解耦框架，将逻辑层和UI层合理的分离开来。
 功能|描述
 -|-  
-方法定义：|
- private string MyEventHandler(float f1) { return "Test " + f1; }
-订阅监听：|
- Messenger<float>.AddListener("myEvent", MyEventHandler);
-广播监听：|
- Messenge<float>.Broadcast("myEvent", 1.0f);
-
-针对播放监听：---> 对 MyEventCallback 方法|
- Messenger<float>.Broadcast<string>("myEvent", 1.0f, MyEventCallback);
- private void MyEventCallback(string s1) { Debug.Log(s1"); }
+方法定义|private string MyEventHandler(float f1) { return "Test " + f1; }
+订阅监听|Messenger<float>.AddListener("myEvent", MyEventHandler);
+广播监听|Messenge<float>.Broadcast("myEvent", 1.0f);
+针对播放监听|Messenger<float>.Broadcast<string>("myEvent", 1.0f, MyEventHandler);
