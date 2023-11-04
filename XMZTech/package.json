@@ -25,6 +25,11 @@
       "displayName": "TCP",
       "description": "TCP/IP 工具，包含Client和Server，以及TimeAction代码块，还有上层封装ClientManager，ServerManager",
       "path": "Sample~/TCP"
+    },  
+    {
+      "displayName": "Messenger",
+      "description": "事件回调管理器，应用于框架中的消息机制，解耦框架，将逻辑层和UI层合理的分离开来。",
+      "path": "Sample~/Messenger"
     }
   ],
    "author": {
