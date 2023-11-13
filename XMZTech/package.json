@@ -1,7 +1,7 @@
 {
   "name": "net.xmztech.tools",
   "displayName": "XMZTech Develop Tools",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "type": "library",
   "description": "自用小工具，由XMZTech(小马扎科技(郑州)有限公司)技术人员维护 ",
   "unity": "2021.3",
@@ -30,10 +30,15 @@
       "displayName": "Messenger",
       "description": "事件回调管理器，应用于框架中的消息机制，解耦框架，将逻辑层和UI层合理的分离开来。",
       "path": "Samples~/Messenger"
+    },  
+    {
+      "displayName": "Ultraleap Gestures Tool",
+      "description": "Ultraleap 的手势检测工具，封装了可扩展的手势枚举以及手势管理器GestureManager，注意：本工具需要搭配Ultraleap.UnityPlugin_6.12.1以上版本SDK使用。",
+      "path": "Samples~/UltraleapGesturesTool"
     }
   ],
    "author": {
-    "name": "XMZTech[小马扎科技(郑州)有限公司]",
+    "name": "XMZTech[小马扎科技(郑州)有限公司]", 
     "email": "dev_hlc@163.com",
     "url": "https://www.unity3d.com"
   }
