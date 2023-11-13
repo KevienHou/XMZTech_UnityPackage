@@ -27,3 +27,10 @@ Disc： 事件回调管理器，应用于框架中的消息机制，解耦框架
 订阅监听|Messenger<float>.AddListener("myEvent", MyEventHandler);
 广播监听|Messenge<float>.Broadcast("myEvent", 1.0f);
 针对播放监听|Messenger<float>.Broadcast<string>("myEvent", 1.0f, MyEventHandler);
+### 4.Ultraleap Gesture Tool
+Disc：针对 Ultraleap 设备的手势检测工具，封装了可扩展的手势枚举以及手势管理器 GestureManager，注意：本工具需要搭配Ultraleap.UnityPlugin_6.12.1以上版本SDK使用。
+功能|描述
+-|-  
+1.HandGestureManager| 手势管理器
+2.Demo|包中已包含示例脚本
+易于扩展
