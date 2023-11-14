@@ -1,7 +1,7 @@
 {
   "name": "net.xmztech.tools",
   "displayName": "XMZTech Develop Tools",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "type": "library",
   "description": "自用小工具，由XMZTech(小马扎科技(郑州)有限公司)技术人员维护 ",
   "unity": "2021.3",

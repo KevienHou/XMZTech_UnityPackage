@@ -282,6 +282,7 @@ namespace com.XMZTech.HandGesture
                     //}
                     currListener.GestureCompleted(gestureData.gesture);
                     ResetListenerGestures();
+                    //ResetGesture(gestureData.gesture);
                 }
                 else if (gestureData.cancelled)
                 {
@@ -332,11 +333,11 @@ namespace com.XMZTech.HandGesture
                     {
                         case 0:
                             //左手被追踪                               //左手张开
-                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].GetFistStrength() <= 0.4f)
+                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].GetFistStrength() <= 0.3f)
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, leftHandIndex, handPos[leftHandIndex]);
                             }           //右手被追踪                               //右手张开
-                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].GetFistStrength() <= 0.4f)
+                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].GetFistStrength() <= 0.3f)
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, rightHandIndex, handPos[rightHandIndex]);
                             }
@@ -348,7 +349,7 @@ namespace com.XMZTech.HandGesture
                             {
                                 bool isInPose = handsTracked[gestureData.hand] && //手被追踪
                                     handPos[gestureData.hand].x < gestureData.handPos.x &&
-                                    (gestureData.handPos.x - handPos[gestureData.hand].x) > 0.1f;//现在手的位置在之前手的左方10cm外  
+                                    (gestureData.handPos.x - handPos[gestureData.hand].x) > 0.15f;//现在手的位置在之前手的左方10cm外  
                                 CheckGestureComplete(ref gestureData, timeStamp, isInPose);
                             }
                             else
@@ -365,11 +366,11 @@ namespace com.XMZTech.HandGesture
                     {
                         case 0:
                             //左手被追踪                               //左手张开
-                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].GetFistStrength() <= 0.4f)
+                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].GetFistStrength() <= 0.3f)
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, leftHandIndex, handPos[leftHandIndex]);
                             }           //右手被追踪                               //右手张开
-                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].GetFistStrength() <= 0.4f)
+                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].GetFistStrength() <= 0.3f)
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, rightHandIndex, handPos[rightHandIndex]);
                             }
@@ -381,7 +382,7 @@ namespace com.XMZTech.HandGesture
                             {
                                 bool isInPose = handsTracked[gestureData.hand] && //手被追踪
                                      gestureData.handPos.x < handPos[gestureData.hand].x &&
-                                    (handPos[gestureData.hand].x - gestureData.handPos.x) > 0.1f;//现在手的位置在之前手的左方10cm外  
+                                    (handPos[gestureData.hand].x - gestureData.handPos.x) > 0.15f;//现在手的位置在之前手的左方10cm外  
                                 CheckGestureComplete(ref gestureData, timeStamp, isInPose);
                             }
                             else
@@ -398,11 +399,11 @@ namespace com.XMZTech.HandGesture
                         case 0:
 
                             //左手被追踪                               //左手张开
-                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].GetFistStrength() <= 0.4f)
+                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].GetFistStrength() <= 0.3f)
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, leftHandIndex, handPos[leftHandIndex]);
                             }           //右手被追踪                               //右手张开
-                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].GetFistStrength() <= 0.4f)
+                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].GetFistStrength() <= 0.3f)
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, rightHandIndex, handPos[rightHandIndex]);
                             }
@@ -413,7 +414,7 @@ namespace com.XMZTech.HandGesture
                             {
                                 bool isInPose = handsTracked[gestureData.hand] &&
                                      (handPos[gestureData.hand].y > gestureData.handPos.y) &&
-                                   (handPos[gestureData.hand].y - gestureData.handPos.y) > 0.1f;
+                                   (handPos[gestureData.hand].y - gestureData.handPos.y) > 0.15f;
                                 CheckGestureComplete(ref gestureData, timeStamp, isInPose);
                             }
                             else
@@ -432,11 +433,11 @@ namespace com.XMZTech.HandGesture
                         case 0:
 
                             //左手被追踪                               //左手张开
-                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].GetFistStrength() <= 0.4f)
+                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].GetFistStrength() <= 0.3f)
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, leftHandIndex, handPos[leftHandIndex]);
                             }           //右手被追踪                               //右手张开
-                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].GetFistStrength() <= 0.4f)
+                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].GetFistStrength() <= 0.3f)
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, rightHandIndex, handPos[rightHandIndex]);
                             }
@@ -447,7 +448,7 @@ namespace com.XMZTech.HandGesture
                             {
                                 bool isInPose = handsTracked[gestureData.hand] &&
                                      (gestureData.handPos.y > handPos[gestureData.hand].y) &&
-                                   (gestureData.handPos.y - handPos[gestureData.hand].y) > 0.1f;
+                                   (gestureData.handPos.y - handPos[gestureData.hand].y) > 0.15f;
                                 CheckGestureComplete(ref gestureData, timeStamp, isInPose);
                             }
                             else
@@ -464,12 +465,12 @@ namespace com.XMZTech.HandGesture
                     {
                         case 0:
 
-                            //左手被追踪                               //左手张开
-                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].PinchStrength >= 0.85f)
+                            //左手被追踪                               
+                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].IsPinching())
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, leftHandIndex, handPos[leftHandIndex]);
-                            }           //右手被追踪                               //右手张开
-                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].PinchStrength >= 0.85f)
+                            }           //右手被追踪                              
+                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].IsPinching())
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, rightHandIndex, handPos[rightHandIndex]);
                             }
@@ -481,7 +482,7 @@ namespace com.XMZTech.HandGesture
                                 bool isInPose = handsTracked[gestureData.hand] &&
                                     hands[gestureData.hand].PinchStrength > 0.85f &&
                                      (handPos[gestureData.hand].x < gestureData.handPos.x) &&
-                                   (gestureData.handPos.x - handPos[gestureData.hand].x) > 0.1f;
+                                   (gestureData.handPos.x - handPos[gestureData.hand].x) > 0.15f;
                                 CheckGestureComplete(ref gestureData, timeStamp, isInPose);
                             }
                             else
@@ -499,12 +500,12 @@ namespace com.XMZTech.HandGesture
                     {
                         case 0:
 
-                            //左手被追踪                               //左手张开
-                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].PinchStrength >= 0.85f)
+                            //左手被追踪                               
+                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].IsPinching())
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, leftHandIndex, handPos[leftHandIndex]);
-                            }           //右手被追踪                               //右手张开
-                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].PinchStrength >= 0.85f)
+                            }           //右手被追踪                              
+                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].IsPinching())
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, rightHandIndex, handPos[rightHandIndex]);
                             }
@@ -516,7 +517,7 @@ namespace com.XMZTech.HandGesture
                                 bool isInPose = handsTracked[gestureData.hand] &&
                                     hands[gestureData.hand].PinchStrength > 0.85f &&
                                      (gestureData.handPos.x < handPos[gestureData.hand].x) &&
-                                   (handPos[gestureData.hand].x - gestureData.handPos.x) > 0.1f;
+                                   (handPos[gestureData.hand].x - gestureData.handPos.x) > 0.15f;
                                 CheckGestureComplete(ref gestureData, timeStamp, isInPose);
                             }
                             else
@@ -533,12 +534,12 @@ namespace com.XMZTech.HandGesture
                     {
                         case 0:
 
-                            //左手被追踪                               //左手张开
-                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].PinchStrength >= 0.85f)
+                            //左手被追踪                               
+                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].IsPinching())
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, leftHandIndex, handPos[leftHandIndex]);
-                            }           //右手被追踪                               //右手张开
-                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].PinchStrength >= 0.85f)
+                            }           //右手被追踪                              
+                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].IsPinching())
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, rightHandIndex, handPos[rightHandIndex]);
                             }
@@ -550,7 +551,7 @@ namespace com.XMZTech.HandGesture
                                 bool isInPose = handsTracked[gestureData.hand] &&
                                        hands[gestureData.hand].PinchStrength > 0.85f &&
                                      (handPos[gestureData.hand].y > gestureData.handPos.y) &&
-                                   (handPos[gestureData.hand].y - gestureData.handPos.y) > 0.1f;
+                                   (handPos[gestureData.hand].y - gestureData.handPos.y) > 0.15f;
                                 CheckGestureComplete(ref gestureData, timeStamp, isInPose);
                             }
                             else
@@ -567,12 +568,12 @@ namespace com.XMZTech.HandGesture
                     {
                         case 0:
 
-                            //左手被追踪                               //左手张开
-                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].PinchStrength >= 0.85f)
+                            //左手被追踪                               
+                            if (handsTracked[leftHandIndex] && hands[leftHandIndex].IsPinching())
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, leftHandIndex, handPos[leftHandIndex]);
-                            }           //右手被追踪                               //右手张开
-                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].PinchStrength >= 0.85f)
+                            }           //右手被追踪                              
+                            else if (handsTracked[rightHandIndex] && hands[rightHandIndex].IsPinching())
                             {
                                 SetGestureJoint(ref gestureData, timeStamp, rightHandIndex, handPos[rightHandIndex]);
                             }
@@ -584,7 +585,7 @@ namespace com.XMZTech.HandGesture
                                 bool isInPose = handsTracked[gestureData.hand] &&
                                        hands[gestureData.hand].PinchStrength > 0.85f &&
                                      (gestureData.handPos.y > handPos[gestureData.hand].y) &&
-                                   (gestureData.handPos.y - handPos[gestureData.hand].y) > 0.1f;
+                                   (gestureData.handPos.y - handPos[gestureData.hand].y) > 0.15f;
                                 CheckGestureComplete(ref gestureData, timeStamp, isInPose);
                             }
                             else
