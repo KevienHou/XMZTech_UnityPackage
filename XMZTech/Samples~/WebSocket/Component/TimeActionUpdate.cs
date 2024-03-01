@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace XMZTech.Net.TCP
+namespace XMZTech.Net.WebSocket
 {
     public class TimeActionUpdate
     {

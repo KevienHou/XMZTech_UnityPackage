@@ -1,16 +1,12 @@
-using System;
-using System.Collections;
+using System; 
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;	//调用socket
 using System.Text;
 using System.Threading;	//调用线程
-using UnityEngine;
-using System.IO;
-
-namespace ThursayTool.TCP
-{
-
+using UnityEngine; 
+namespace XMZTech.Net.TCP
+{ 
     public class TCP_Server : MonoBehaviour
     {
         //定义变量（与GUI一致）
@@ -203,4 +199,4 @@ namespace ThursayTool.TCP
         }
     }
 
-}
+} 

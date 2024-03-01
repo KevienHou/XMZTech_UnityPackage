@@ -1,26 +1,23 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using System; 
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.IO;
+using System.Text; 
 
 using System.Threading;
-using UnityEngine;
-using UnityEngine.UI;
-namespace ThursayTool.TCP
-{
+using UnityEngine; 
+namespace XMZTech.Net.TCP
+{ 
+
     public class TCP_Client : MonoBehaviour
     {
-        private string staInfo = "NULL";             //×´Ì¬ĞÅÏ¢
-        private string inputIp = "127.0.0.1";   //ÊäÈëipµØÖ·
-        private string inputPort = "8080";           //ÊäÈë¶Ë¿ÚºÅ
-        public string inputMes = "NULL";             //·¢ËÍµÄÏûÏ¢
-        private int recTimes = 0;                    //½ÓÊÕµ½ĞÅÏ¢µÄ´ÎÊı
-        private string recMes = "NULL";              //½ÓÊÕµ½µÄÏûÏ¢
-        private Socket socketSend;                   //¿Í»§¶ËÌ×½Ó×Ö£¬ÓÃÀ´Á´½ÓÔ¶¶Ë·şÎñÆ÷
-        private bool clickSend = false;              //ÊÇ·ñµã»÷·¢ËÍ°´Å¥
+        private string staInfo = "NULL";             //çŠ¶æ€ä¿¡æ¯
+        private string inputIp = "127.0.0.1";   //è¾“å…¥ipåœ°å€
+        private string inputPort = "8080";           //è¾“å…¥ç«¯å£å·
+        public string inputMes = "NULL";             //å‘é€çš„æ¶ˆæ¯
+        private int recTimes = 0;                    //æ¥æ”¶åˆ°ä¿¡æ¯çš„æ¬¡æ•°
+        private string recMes = "NULL";              //æ¥æ”¶åˆ°çš„æ¶ˆæ¯
+        private Socket socketSend;                   //å®¢æˆ·ç«¯å¥—æ¥å­—ï¼Œç”¨æ¥é“¾æ¥è¿œç«¯æœåŠ¡å™¨
+        private bool clickSend = false;              //æ˜¯å¦ç‚¹å‡»å‘é€æŒ‰é’®
 
         public Action<string> OnBuild;
         public Action<string> OnFeild;
@@ -31,7 +28,7 @@ namespace ThursayTool.TCP
         {
             if (string.IsNullOrEmpty(ipAddress) || ipAddress.Contains(":") == false)
             {
-                Debug.Log("Çë¼ì²éÊäÈëµÄµØÖ·");
+                Debug.Log("è¯·æ£€æŸ¥è¾“å…¥çš„åœ°å€");
                 return;
             }
             var splits = ipAddress.Split(':');
@@ -65,56 +62,56 @@ namespace ThursayTool.TCP
         }
 
         private delegate string ConnectSocketDelegate(IPEndPoint ipep, Socket sock);
-        //½¨Á¢Á´½Ó
+        //å»ºç«‹é“¾æ¥
         private void ClickConnect()
         {
             try
             {
-                int _port = Convert.ToInt32(inputPort);             //»ñÈ¡¶Ë¿ÚºÅ
-                string _ip = inputIp;                               //»ñÈ¡ipµØÖ·
+                int _port = Convert.ToInt32(inputPort);             //è·å–ç«¯å£å·
+                string _ip = inputIp;                               //è·å–ipåœ°å€
 
-                //´´½¨¿Í»§¶ËSocket£¬»ñµÃÔ¶³ÌipºÍ¶Ë¿ÚºÅ
+                //åˆ›å»ºå®¢æˆ·ç«¯Socketï¼Œè·å¾—è¿œç¨‹ipå’Œç«¯å£å·
                 socketSend = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPAddress ip = IPAddress.Parse(_ip);
                 IPEndPoint point = new IPEndPoint(ip, _port);
                 //allSockets.Connect(point); 
-                //staInfo = ip + ":" + _port + "  Á¬½Ó³É¹¦"; 
+                //staInfo = ip + ":" + _port + "  è¿æ¥æˆåŠŸ"; 
 
                 ConnectSocketDelegate connect = ConnectSocket;
                 IAsyncResult asyncResult = connect.BeginInvoke(point, socketSend, null, null);
 
-                bool connectSuccess = asyncResult.AsyncWaitHandle.WaitOne(2000, false); //2Ãëºó½áÊø
+                bool connectSuccess = asyncResult.AsyncWaitHandle.WaitOne(2000, false); //2ç§’åç»“æŸ
                 if (!connectSuccess)
                 {
-                    staInfo = "Á¬½ÓÊ§°Ü£¡´íÎóĞÅÏ¢£ºÁ¬½Ó³¬Ê±";
-                    Debug.Log(staInfo);//2Ãëºóµ¯³ö
+                    staInfo = "è¿æ¥å¤±è´¥ï¼é”™è¯¯ä¿¡æ¯ï¼šè¿æ¥è¶…æ—¶";
+                    Debug.Log(staInfo);//2ç§’åå¼¹å‡º
                     OnFeild?.Invoke(staInfo);
                 }
                 else
                 {
-                    staInfo = "Á¬½Ó³É¹¦ , " + " ip = " + ip + " port = " + _port;
+                    staInfo = "è¿æ¥æˆåŠŸ , " + " ip = " + ip + " port = " + _port;
                     Debug.Log(staInfo);
                     OnBuild?.Invoke(ip + ":" + _port);
                 }
 
-                Thread r_thread = new Thread(Received);             //¿ªÆôĞÂµÄÏß³Ì£¬²»Í£µÄ½ÓÊÕ·şÎñÆ÷·¢À´µÄÏûÏ¢
+                Thread r_thread = new Thread(Received);             //å¼€å¯æ–°çš„çº¿ç¨‹ï¼Œä¸åœçš„æ¥æ”¶æœåŠ¡å™¨å‘æ¥çš„æ¶ˆæ¯
                 r_thread.IsBackground = true;
                 r_thread.Start();
 
-                Thread s_thread = new Thread(SendMessage);          //¿ªÆôĞÂµÄÏß³Ì£¬²»Í£µÄ¸ø·şÎñÆ÷·¢ËÍÏûÏ¢
+                Thread s_thread = new Thread(SendMessage);          //å¼€å¯æ–°çš„çº¿ç¨‹ï¼Œä¸åœçš„ç»™æœåŠ¡å™¨å‘é€æ¶ˆæ¯
                 s_thread.IsBackground = true;
                 s_thread.Start();
             }
             catch (Exception)
             {
-                Debug.Log("IP»òÕß¶Ë¿ÚºÅ´íÎó......");
-                staInfo = "IP»òÕß¶Ë¿ÚºÅ´íÎó......";
+                Debug.Log("IPæˆ–è€…ç«¯å£å·é”™è¯¯......");
+                staInfo = "IPæˆ–è€…ç«¯å£å·é”™è¯¯......";
                 OnFeild?.Invoke(staInfo);
             }
         }
 
         /// <summary>
-        /// ½ÓÊÕ·şÎñ¶Ë·µ»ØµÄÏûÏ¢
+        /// æ¥æ”¶æœåŠ¡ç«¯è¿”å›çš„æ¶ˆæ¯
         /// </summary>
         void Received()
         {
@@ -123,7 +120,7 @@ namespace ThursayTool.TCP
                 try
                 {
                     byte[] buffer = new byte[1024 * 10];
-                    //Êµ¼Ê½ÓÊÕµ½µÄÓĞĞ§×Ö½ÚÊı
+                    //å®é™…æ¥æ”¶åˆ°çš„æœ‰æ•ˆå­—èŠ‚æ•°
                     int len = socketSend.Receive(buffer);
                     if (len == 0)
                     {
@@ -133,17 +130,17 @@ namespace ThursayTool.TCP
                     recMes = Encoding.UTF8.GetString(buffer, 0, len);
 
                     OnReceived?.Invoke(recMes);
-                    Debug.Log("¿Í»§¶Ë½ÓÊÕµ½µÄÊı¾İ £º " + recMes);
+                    Debug.Log("å®¢æˆ·ç«¯æ¥æ”¶åˆ°çš„æ•°æ® ï¼š " + recMes);
 
                     recTimes++;
-                    Debug.Log("½ÓÊÕ´ÎÊıÎª£º" + recTimes);
+                    Debug.Log("æ¥æ”¶æ¬¡æ•°ä¸ºï¼š" + recTimes);
                 }
                 catch { }
             }
         }
 
         /// <summary>
-        /// Ïò·şÎñÆ÷·¢ËÍÏûÏ¢
+        /// å‘æœåŠ¡å™¨å‘é€æ¶ˆæ¯
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -153,14 +150,14 @@ namespace ThursayTool.TCP
             {
                 while (true)
                 {
-                    if (clickSend)                              //Èç¹ûµã»÷ÁË·¢ËÍ°´Å¥
+                    if (clickSend)                              //å¦‚æœç‚¹å‡»äº†å‘é€æŒ‰é’®
                     {
                         clickSend = false;
                         string msg = inputMes;
                         byte[] buffer = new byte[1024 * 6];
                         buffer = Encoding.UTF8.GetBytes(msg);
                         socketSend.Send(buffer);
-                        Debug.Log("·¢ËÍµÄÊı¾İÎª£º" + msg);
+                        Debug.Log("å‘é€çš„æ•°æ®ä¸ºï¼š" + msg);
                     }
                 }
             }
@@ -178,8 +175,8 @@ namespace ThursayTool.TCP
             {
                 try
                 {
-                    socketSend.Shutdown(SocketShutdown.Both);    //½ûÓÃSocketµÄ·¢ËÍºÍ½ÓÊÕ¹¦ÄÜ
-                    socketSend.Close();                          //¹Ø±ÕSocketÁ¬½Ó²¢ÊÍ·ÅËùÓĞÏà¹Ø×ÊÔ´
+                    socketSend.Shutdown(SocketShutdown.Both);    //ç¦ç”¨Socketçš„å‘é€å’Œæ¥æ”¶åŠŸèƒ½
+                    socketSend.Close();                          //å…³é—­Socketè¿æ¥å¹¶é‡Šæ”¾æ‰€æœ‰ç›¸å…³èµ„æº
                 }
                 catch (Exception e)
                 {
@@ -190,37 +187,37 @@ namespace ThursayTool.TCP
             Debug.Log("end OnDisable()");
         }
 
-        ////ÓÃ»§½çÃæ
+        ////ç”¨æˆ·ç•Œé¢
         //void OnGUI()
         //{
         //    GUI.color = Color.black;
 
-        //    GUI.Label(new Rect(65, 10, 60, 20), "×´Ì¬ĞÅÏ¢");
+        //    GUI.Label(new Rect(65, 10, 60, 20), "çŠ¶æ€ä¿¡æ¯");
 
         //    GUI.Label(new Rect(135, 10, 80, 60), staInfo);
 
-        //    GUI.Label(new Rect(65, 70, 50, 20), "·şÎñÆ÷ipµØÖ·");
+        //    GUI.Label(new Rect(65, 70, 50, 20), "æœåŠ¡å™¨ipåœ°å€");
 
         //    inputIp = GUI.TextField(new Rect(125, 70, 100, 20), inputIp, 20);
 
-        //    GUI.Label(new Rect(65, 110, 50, 20), "·şÎñÆ÷¶Ë¿Ú");
+        //    GUI.Label(new Rect(65, 110, 50, 20), "æœåŠ¡å™¨ç«¯å£");
 
         //    inputPort = GUI.TextField(new Rect(125, 110, 100, 20), inputPort, 20);
 
-        //    GUI.Label(new Rect(65, 150, 80, 20), "½ÓÊÕµ½ÏûÏ¢£º");
+        //    GUI.Label(new Rect(65, 150, 80, 20), "æ¥æ”¶åˆ°æ¶ˆæ¯ï¼š");
 
         //    GUI.Label(new Rect(155, 150, 80, 20), recMes);
 
-        //    GUI.Label(new Rect(65, 190, 80, 20), "·¢ËÍµÄÏûÏ¢£º");
+        //    GUI.Label(new Rect(65, 190, 80, 20), "å‘é€çš„æ¶ˆæ¯ï¼š");
 
         //    inputMes = GUI.TextField(new Rect(155, 190, 100, 20), inputMes, 20);
 
-        //    if (GUI.Button(new Rect(65, 230, 60, 20), "¿ªÊ¼Á¬½Ó"))
+        //    if (GUI.Button(new Rect(65, 230, 60, 20), "å¼€å§‹è¿æ¥"))
         //    {
         //        ClickConnect();
         //    }
 
-        //    if (GUI.Button(new Rect(65, 270, 60, 20), "·¢ËÍĞÅÏ¢"))
+        //    if (GUI.Button(new Rect(65, 270, 60, 20), "å‘é€ä¿¡æ¯"))
         //    {
         //        clickSend = true;
         //    }
